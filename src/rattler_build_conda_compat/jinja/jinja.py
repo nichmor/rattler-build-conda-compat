@@ -43,7 +43,7 @@ def jinja_env(variant_config: Mapping[str, str] | None = None) -> SandboxedEnvir
         variant_config = {"target_platform": "linux-64", "build_platform": "linux-64", "mpi": "mpi"}
 
     extra_vars = {}
-    target_platform = variant_config["target_platform"]
+    target_platform = variant_config.get("target_platform", "linux-64")
     if target_platform != "noarch":
         # set `linux` / `win`
         platform, arch = target_platform.split("-")
